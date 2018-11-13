@@ -7,7 +7,7 @@ jobs:
         working_directory: ~/repo
 
         steps:
-        - run:
+          - run:
             name: Call HelloWorld
             command: |
                 curl \
@@ -22,7 +22,7 @@ jobs:
         working_directory: ~/repo
 
         steps:
-        - run:
+          - run:
             name: HelloWorld
             command: echo "HelloWorld"
 
