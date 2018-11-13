@@ -8,7 +8,7 @@ commands:
   callhello:
     steps:
       - run:
-        name: Call Hello
+        name: Call HelloWorld
         command: |
           curl \
             --user ${API_TOKEN}: \
