@@ -7,14 +7,14 @@ executors:
 commands:
   callhello:
     steps:
-      - run:
-        name: Call HelloWorld
-        command: |
-          curl \
-            --user ${API_TOKEN}: \
-            --header "Content-Type: application/json" \
-            --data "{\"build_parameters\": {\"CIRCLE_JOB\": \"hello\"}}" \
-            --request POST "https://circleci.com/api/v1.1/project/github/kptdobe/circleci_bug_report/master"
+    - run:
+      name: Call HelloWorld
+      command: |
+        curl \
+          --user ${API_TOKEN}: \
+          --header "Content-Type: application/json" \
+          --data "{\"build_parameters\": {\"CIRCLE_JOB\": \"hello\"}}" \
+          --request POST "https://circleci.com/api/v1.1/project/github/kptdobe/circleci_bug_report/master"
 
 
 jobs:
@@ -23,16 +23,16 @@ jobs:
     working_directory: ~/repo
 
     steps:
-      - callhello
+    - callhello
 
   hello:
     executor: node8
     working_directory: ~/repo
 
     steps:
-      - run:
-        name: Hello world
-        command: echo "Hello World"
+    - run:
+      name: Hello world
+      command: echo "Hello World"
 
 workflows:
   version: 2
