@@ -14,7 +14,7 @@ commands:
                 --user ${API_TOKEN}: \
                 --header "Content-Type: application/json" \
                 --data "{\"build_parameters\": {\"CIRCLE_JOB\": \"hello\"}}" \
-                --request POST "https://circleci.com/api/v1.1/project/github/kptdobe/circleci_bug_report/master"
+                --request POST "https://circleci.com/api/v1.1/project/github/kptdobe/circleci_bug_report/tree/master"
 
 jobs:
     build:
