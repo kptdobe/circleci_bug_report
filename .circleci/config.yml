@@ -30,8 +30,8 @@ jobs:
 
         steps:
         - run:
-            name: Hello world
-            command: echo "Hello World"
+            name: HelloWorld
+            command: echo "HelloWorld"
 
 workflows:
     version: 2
