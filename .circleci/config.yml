@@ -1,44 +1,43 @@
 version: 2.1
 executors:
-  node8:
-    docker:
-      - image: circleci/node:8
+    node8:
+        docker:
+            - image: circleci/node:8
 
 commands:
-  callhello:
-    steps:
-    - run:
-      name: Call HelloWorld
-      command: |
-        curl \
-          --user ${API_TOKEN}: \
-          --header "Content-Type: application/json" \
-          --data "{\"build_parameters\": {\"CIRCLE_JOB\": \"hello\"}}" \
-          --request POST "https://circleci.com/api/v1.1/project/github/kptdobe/circleci_bug_report/master"
-
+    callhello:
+        steps:
+        - run:
+            name: Call HelloWorld
+            command: |
+                curl \
+                --user ${API_TOKEN}: \
+                --header "Content-Type: application/json" \
+                --data "{\"build_parameters\": {\"CIRCLE_JOB\": \"hello\"}}" \
+                --request POST "https://circleci.com/api/v1.1/project/github/kptdobe/circleci_bug_report/master"
 
 jobs:
-  build:
-    executor: node8
-    working_directory: ~/repo
+    build:
+        executor: node8
+        working_directory: ~/repo
 
-    steps:
-    - callhello
+        steps:
+        - callhello
 
-  hello:
-    executor: node8
-    working_directory: ~/repo
+    hello:
+        executor: node8
+        working_directory: ~/repo
 
-    steps:
-    - run:
-      name: Hello world
-      command: echo "Hello World"
+        steps:
+        - run:
+            name: Hello world
+            command: echo "Hello World"
 
 workflows:
-  version: 2
-  build:
-    jobs:
-      - build
-  hello:
-    jobs:
-      - hello
+    version: 2
+    build:
+        jobs:
+            - build
+    hello:
+        jobs:
+            - hello
