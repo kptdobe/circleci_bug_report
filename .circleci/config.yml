@@ -1,11 +1,11 @@
-version: 2.1
-executors:
-    node8:
+version: 2.0
+
+jobs:
+    build:
         docker:
             - image: circleci/node:8
+        working_directory: ~/repo
 
-commands:
-    callhello:
         steps:
         - run:
             name: Call HelloWorld
@@ -14,18 +14,11 @@ commands:
                 --user ${API_TOKEN}: \
                 --header "Content-Type: application/json" \
                 --data "{\"build_parameters\": {\"CIRCLE_JOB\": \"hello\"}}" \
-                --request POST "https://circleci.com/api/v1.1/project/github/kptdobe/circleci_bug_report/tree/master"
-
-jobs:
-    build:
-        executor: node8
-        working_directory: ~/repo
-
-        steps:
-        - callhello
+                --request POST "https://circleci.com/api/v1.1/project/github/kptdobe/circleci_bug_report/tree/v2.0"
 
     hello:
-        executor: node8
+        docker:
+            - image: circleci/node:8
         working_directory: ~/repo
 
         steps:
