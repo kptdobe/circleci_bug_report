@@ -25,7 +25,8 @@ jobs:
             - callhello
 
     hello:
-        executor: node8
+        docker:
+            - image: circleci/node:8
         working_directory: ~/repo
 
         steps:
