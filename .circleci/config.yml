@@ -45,8 +45,6 @@ workflows:
         jobs:
             - build
     hello:
+        when: << pipeline.parameters.hello >>
         jobs:
-            - when:
-                condition: << pipeline.parameters.hello >>
-                steps:
-                    - hello
+            - hello
