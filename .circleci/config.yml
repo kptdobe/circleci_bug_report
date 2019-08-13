@@ -18,8 +18,8 @@ commands:
                     curl \
                     --user ${API_TOKEN}: \
                     --header "Content-Type: application/json" \
-                    --data "{\"parameters\": {\"hello\": true}}" \
-                    --request POST "https://circleci.com/api/v2/project/github/kptdobe/circleci_bug_report/new_api_test/pipeline"
+                    --data "{\"parameters\": {\"hello\": true}, \"branch\": \"new_api_test\"}" \
+                    --request POST "https://circleci.com/api/v2/project/github/kptdobe/circleci_bug_report/pipeline"
 
 jobs:
     build:
