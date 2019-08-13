@@ -4,6 +4,11 @@ executors:
         docker:
             - image: circleci/node:8
 
+parameters:
+  hello:
+    type: boolean
+    default: false
+
 commands:
     callhello:
         steps:
@@ -13,8 +18,8 @@ commands:
                     curl \
                     --user ${API_TOKEN}: \
                     --header "Content-Type: application/json" \
-                    --data "{\"build_parameters\": {\"CIRCLE_JOB\": \"hello\"}}" \
-                    --request POST "https://circleci.com/api/v1.1/project/github/kptdobe/circleci_bug_report/tree/master"
+                    --data "{\"parameters\": {\"hello\": true}}" \
+                    --request POST "https://circleci.com/api/v2/project/github/kptdobe/circleci_bug_report/new_api_test/pipeline"
 
 jobs:
     build:
@@ -41,4 +46,7 @@ workflows:
             - build
     hello:
         jobs:
-            - hello
+            - when:
+                condition: << pipeline.parameters.hello >>
+                steps:
+                    - hello
