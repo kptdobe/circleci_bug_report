@@ -9,7 +9,7 @@ parameters:
     type: boolean
     default: false
   object:
-    type: string
+    type: object
     default: "No value"
 
 commands:
@@ -21,7 +21,7 @@ commands:
                     curl \
                     --user ${API_TOKEN}: \
                     --header "Content-Type: application/json" \
-                    --data "{ \"parameters\": {\"object\": { \"p1\": \"v1\", \"p2\": \"v2\"}, \"branch\": \"api-2-playground\", \"hello\": \"true\"}" \
+                    --data "{ \"branch\": \"api-2-playground\", \"parameters\": { \"object\": \"{ \"p1\": \"v1\",  \"p2\": \"v2\" }\", \"hello\": true }}" \
                     --request POST "https://circleci.com/api/v2/project/github/kptdobe/circleci_bug_report/pipeline"
 
 jobs:
@@ -40,6 +40,10 @@ jobs:
         steps:
             - run:
                 name: Object parameter value
+                command: echo "<< pipeline.parameters.object >>"
+
+            - run:
+                name: EQ object parameter value
                 command: echo "<< pipeline.parameters.object >>"
 
 workflows:
