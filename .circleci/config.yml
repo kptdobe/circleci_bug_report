@@ -8,6 +8,8 @@ parameters:
   hello:
     type: boolean
     default: false
+  object:
+    type: String
 
 commands:
     callhello:
@@ -18,7 +20,7 @@ commands:
                     curl \
                     --user ${API_TOKEN}: \
                     --header "Content-Type: application/json" \
-                    --data "{\"parameters\": {\"hello\": true}, \"branch\": \"new_api_test\"}" \
+                    --data "{ \"parameters\": {\"object\": { \"p1\": \"v1\", \"p2\": \"v2\"}}, \"branch\": \"api-2-playground\", \"hello\": \"true\"}" \
                     --request POST "https://circleci.com/api/v2/project/github/kptdobe/circleci_bug_report/pipeline"
 
 jobs:
@@ -36,8 +38,8 @@ jobs:
 
         steps:
             - run:
-                name: HelloWorld
-                command: echo "HelloWorld"
+                name: Object parameter value
+                command: echo "<< pipeline.parameters.object >>"
 
 workflows:
     version: 2
