@@ -9,7 +9,7 @@ parameters:
     type: boolean
     default: false
   object:
-    type: String
+    type: string
     default: "No value"
 
 commands:
