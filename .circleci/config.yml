@@ -10,6 +10,7 @@ parameters:
     default: false
   object:
     type: String
+    default: "No value"
 
 commands:
     callhello:
@@ -20,7 +21,7 @@ commands:
                     curl \
                     --user ${API_TOKEN}: \
                     --header "Content-Type: application/json" \
-                    --data "{ \"parameters\": {\"object\": \"{ \"p1\": \"v1\", \"p2\": \"v2\"}\", \"branch\": \"api-2-playground\", \"hello\": \"true\"}" \
+                    --data "{ \"parameters\": {\"object\": { \"p1\": \"v1\", \"p2\": \"v2\"}, \"branch\": \"api-2-playground\", \"hello\": \"true\"}" \
                     --request POST "https://circleci.com/api/v2/project/github/kptdobe/circleci_bug_report/pipeline"
 
 jobs:
